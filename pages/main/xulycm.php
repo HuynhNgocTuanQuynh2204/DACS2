@@ -21,9 +21,14 @@ use Carbon\Carbon;
     } else {
         $id_sanpham = $_GET['id_sanpham'];
         $id_comment = $_GET['id_comment'];
+        $sql = "SELECT * FROM tbl_comment WHERE id_comment = '$id_comment' LIMIT 1";
+         $query = mysqli_query($mysqli,$sql);
+          while($row = mysqli_fetch_array($query)){
+          unlink('anhcm/'.$row['hinhanh']);
+       }
         $sql_xoacm = "DELETE FROM tbl_comment WHERE id_comment ='" . $id_comment . "'";
         $kq = mysqli_query($mysqli, $sql_xoacm);
-        echo '<script>alert("Xóa bình luận"); window.location.href = "index.php?quanly=sanpham&id=' . $id_sanpham . '";</script>';
+        echo '<script>alert("Bình luận của bạn đã được xóa"); window.location.href = "index.php?quanly=sanpham&id=' . $id_sanpham . '";</script>';
 
     }
 ?>

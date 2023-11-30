@@ -4,7 +4,7 @@
 ?>
 <h6 style="text-align: center;text-transform: uppercase;font-weight: bold;">Sửa danh mục bài viết</h6>
 <table border="1px" width="50%" style="border-collapse: collapse;">
-  <form method="POST" action="modules/quanlydanhmucbaiviet/xuly.php?iddanhmucbaiviet=<?php echo $_GET['iddanhmucbaiviet'] ?> ?>">
+  <form method="POST" action="modules/quanlydanhmucbaiviet/xuly.php?iddanhmucbaiviet=<?php echo $_GET['iddanhmucbaiviet'] ?>">
    <?php
         while ($dong = mysqli_fetch_array($query_sua_danhmucbv)){
    ?>
