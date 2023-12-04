@@ -1,6 +1,6 @@
 <?php
 include('../../config/config.php');
-
+session_start();
 
    $tensach = $_POST['tensach'];
    $masach = $_POST['masach'];
@@ -12,14 +12,14 @@ include('../../config/config.php');
    $tomtat = $_POST['tomtat'];
    $noidung = $_POST['noidung'];
    $danhmuc = $_POST['danhmuc'];
-   
+   $id_admin = $_SESSION['id_admin'];
 
   
 
    if(isset($_POST['themsach'])){
    //them
-    $sql_them = "INSERT INTO tbl_sach(tensach,masach,tacgia,hinhanh,tomtat,noidung,id_danhmucsach) VALUE('".$tensach."
-      ','".$masach."','".$tacgia."','".$hinhanh_time."','".$tomtat."','".$noidung."','".$danhmuc."')";
+    $sql_them = "INSERT INTO tbl_sach(tensach,masach,tacgia,hinhanh,tomtat,noidung,id_danhmucsach,id_admin) VALUE('".$tensach."
+      ','".$masach."','".$tacgia."','".$hinhanh_time."','".$tomtat."','".$noidung."','".$danhmuc."','".$id_admin."')";
    mysqli_query($mysqli,$sql_them);
    move_uploaded_file($hinhanh_tmp,'uploads/'.$hinhanh_time);
    header('location:../../index.php?action=sach&query=them');
@@ -31,7 +31,7 @@ include('../../config/config.php');
          move_uploaded_file($hinhanh_tmp,'uploads/'.$hinhanh_time);       
          $sql_update = "UPDATE tbl_sach SET tensach='". $tensach."',masach='".$masach."', 
           tacgia='". $tacgia."', hinhanh='". $hinhanh_time."', tomtat='". $tomtat."', noidung='". $noidung."'
-        ,id_danhmucsach='". $danhmuc."' WHERE id_sach='$_GET[idsanpham]'";
+        ,id_danhmucsach='". $danhmuc."', id_admin ='".$id_admin."' WHERE id_sach='$_GET[idsanpham]'";
          $sql = "SELECT * FROM tbl_sach WHERE id_sach = '$_GET[idsanpham]' LIMIT 1";
          $query = mysqli_query($mysqli,$sql);
          while($row = mysqli_fetch_array($query)){
@@ -40,7 +40,7 @@ include('../../config/config.php');
       }else{
          $sql_update = "UPDATE tbl_sach SET tensach='". $tensach."',masach='".$masach."', tacgia='". $tacgia."',
           tomtat='". $tomtat."', noidung='". $noidung."',
-        id_danhmucsach='". $danhmuc."' WHERE id_sach='$_GET[idsanpham]'";
+        id_danhmucsach='". $danhmuc."',id_admin ='".$id_admin."' WHERE id_sach='$_GET[idsanpham]'";
       }
       mysqli_query($mysqli,$sql_update);
       header('location:../../index.php?action=sach&query=them');

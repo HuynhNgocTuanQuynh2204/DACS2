@@ -9,7 +9,7 @@
     <th>ID</th>
     <th>Mã đơn hàng</th>
     <th>Tên khách hàng</th>
-    <th>Địa chỉ nhận hàng</th>
+    <th>Địa chỉ nhận </th>
     <th>Email</th>
     <th>Số điện thoại</th>
     <th>Tình trạng</th>
@@ -33,9 +33,11 @@
     <td>
         <?php
         if($row['cart_status'] == 1){
-            echo ' <a href="modules/quanlydonhang/xuly.php?cart_status=0&code='.$row['code_cart'].'">Đơn hàng mới</a>';
-        } else{
+            echo ' <a class="btn btn-danger" href="modules/quanlydonhang/xuly.php?cart_status=0&code='.$row['code_cart'].'">Đơn hàng mới</a>';
+        } elseif($row['cart_status'] == 0){
           echo 'Đã xem';
+        }else{
+          echo'<b style="color:violet">Đã nhận hàng</b>';
         }
         ?>
     </td>

@@ -17,7 +17,7 @@
       while($row = mysqli_fetch_array($query)){
     ?>
     <div class="carousel-item <?php if($active){ echo 'active'; $active = false; } ?>">
-      <a href="<?php echo $row['link'] ?>"><img src="admincp/modules/quanlywebsite/uploads/<?php echo $row['hinhanh'] ?>" class="d-block w-100" alt="Slide"></a>
+      <a href="<?php echo $row['link'] ?>"><img   src="admincp/modules/quanlywebsite/uploads/<?php echo $row['hinhanh'] ?>" class="d-block w-100" alt="Slide"></a>
     </div>
     <?php
       }
@@ -46,6 +46,9 @@ Với sứ mệnh làm cho bảo mật mạng trở nên dễ hiểu và áp d�
 Hãy liên hệ với chúng tôi ngay hôm nay để bắt đầu hành trình của bạn trong thế giới bảo mật mạng. Chúng tôi luôn sẵn lòng lắng nghe và hỗ trợ bạn trên con đường của kiến thức và thành công.
 Hãy nhập thông tin liên hệ của bạn dưới đây hoặc đăng ký để nhận tin tức và cập nhật mới nhất từ chúng tôi. Chào mừng bạn đến với cộng đồng của chúng tôi
           </p>
+        </div>
+        <div>
+          <img class="img img-fluid" src="images/p69.png" width="100%" alt="">
         </div>
       </div>
     </div>
@@ -182,6 +185,12 @@ thức sâu rộng về bảo mật mạng và an toàn thông tin. Tại đây,
 môi trường an toàn, thông tin và đầy tri thức. Chúng tôi tin rằng, thông qua sự chia sẻ, học hỏi và áp dụng kiến thức thực tiễn, bạn sẽ trở 
 thành một chuyên gia tự tin về an toàn thông tin không chỉ cho bản thân mình mà còn cho cả cộng đồng xung quanh.</p>
 
-
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="Chat"
+  agent-id="b91913fe-2279-4cb9-8a27-f191300f8056"
+  language-code="vi"
+></df-messenger>
 </body>
 </html>

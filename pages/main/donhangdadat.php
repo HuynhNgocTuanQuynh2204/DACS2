@@ -10,7 +10,7 @@
    if(isset($_SESSION['id_khachhang'])){?>
   <div class="arrow-steps clearfix">
     <div class="step done"> <span> <a href="index.php?quanly=giohang" >Giỏ hàng</a></span> </div>
-    <div class="step done"> <span><a href="index.php?quanly=vanchuyen" >Vận chuyển</a></span> </div>
+    <div class="step done"> <span><a href="index.php?quanly=vanchuyen" >Địa chỉ nhận</a></span> </div>
     <div class="step done"> <span><a href="index.php?quanly=thongtinthanhtoan" >Thanh toán</a><span> </div>
     <div class="step current"> <span><a href="index.php?quanly=donhangdadat" >Đơn hàng đang giao</a><span> </div>
   </div>
@@ -26,11 +26,12 @@ $query_lietke_dh = mysqli_query($mysqli, $sql_lietke_dh);
 <div class="container">
     <div class="table-responsive">
           <table style="width: 100%;" border="1" style="border-collapse: collapse;">
+          <h6 style="text-align: center;padding: 5px;">Khi đã nhận được khóa học vui lòng kích vào tình trạng để xác nhận đơn hàng</h6>
             <tr>
               <th>ID</th>
               <th>Mã đơn hàng</th>
               <th>Tên khách hàng</th>
-              <th>Địa chỉ nhận hàng</th>
+              <th>Địa chỉ nhận</th>
               <th>Email</th>
               <th>Số điện thoại</th>
               <th>Tình trạng</th>
@@ -42,7 +43,7 @@ $query_lietke_dh = mysqli_query($mysqli, $sql_lietke_dh);
             $i = 0;
             while ($row = mysqli_fetch_array($query_lietke_dh)) {
               $i++;
-              if ($row['cart_status'] == 0) {
+              if ($row['cart_status'] == 0 || $row['cart_status'] == 2) {
             ?>
               <tr>
                 <td><?php echo $i ?></td>
@@ -54,7 +55,9 @@ $query_lietke_dh = mysqli_query($mysqli, $sql_lietke_dh);
                 <td>
                   <?php
                   if ($row['cart_status'] == 0) {
-                    echo '<b style="color:blue">Đơn hàng đang vận chuyển</b>';
+                    echo '<b style="color:blue">Đơn hàng đã gửi đến địa chỉ nhận</b>';
+                  }else{
+                    echo'<b style="color:violet">Đã nhận hàng</b>';
                   }
                   ?>
                 </td>

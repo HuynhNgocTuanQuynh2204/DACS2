@@ -9,7 +9,9 @@ if (isset($_POST['dangnhap'])) {
     $row = mysqli_query($mysqli, $sql);
     $count = mysqli_num_rows($row);
     if ($count > 0) {
-        $_SESSION['dangnhap'] = $taikhoan;
+         $row_data = mysqli_fetch_array($row);
+        $_SESSION['dangnhap'] = $row_data['username'];
+        $_SESSION['id_admin'] = $row_data['id_admin'];
         header('location:index.php');
     } else {
         echo '<script> alert("Tài khoản hoặc mật khẩu không đúng vui lòng nhập lại");</script>';

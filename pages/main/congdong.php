@@ -40,3 +40,10 @@ $query_pro_bd = mysqli_query($mysqli, $sql_pro_bd);
     }
     ?>
 </div>
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="Chat"
+  agent-id="b91913fe-2279-4cb9-8a27-f191300f8056"
+  language-code="vi"
+></df-messenger>

@@ -12,7 +12,9 @@ if(isset($_GET['cart_status']) && isset($_GET['code'])){
     $sql = "UPDATE tbl_cart SET cart_status = '$status' WHERE code_cart = '$code'";
     $sql_query = mysqli_query($mysqli, $sql);
 
-    $sql_lietke_dh = "SELECT * FROM tbl_cart_details, tbl_sanpham WHERE tbl_cart_details.id_sanpham = tbl_sanpham.id_sanpham AND tbl_cart_details.code_cart = '$code' ORDER BY tbl_cart_details.id_cart_details DESC";
+    $sql_lietke_dh = "SELECT * FROM tbl_cart_details, tbl_sanpham WHERE 
+    tbl_cart_details.id_sanpham = tbl_sanpham.id_sanpham AND tbl_cart_details.code_cart = '$code' 
+    ORDER BY tbl_cart_details.id_cart_details DESC";
     $query_lietke_dh = mysqli_query($mysqli, $sql_lietke_dh);
 
     $sql_thongke = "SELECT * FROM tbl_thongke WHERE ngaydat = '$now'";

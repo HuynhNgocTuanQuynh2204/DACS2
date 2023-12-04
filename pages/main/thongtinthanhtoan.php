@@ -4,7 +4,7 @@
    if(isset($_SESSION['id_khachhang'])){?>
   <div class="arrow-steps clearfix">
     <div class="step done"> <span> <a href="index.php?quanly=giohang" >Giỏ hàng</a></span> </div>
-    <div class="step done"> <span><a href="index.php?quanly=vanchuyen" >Vận chuyển</a></span> </div>
+    <div class="step done"> <span><a href="index.php?quanly=vanchuyen" >Địa chỉ nhận</a></span> </div>
     <div class="step current "> <span><a href="index.php?quanly=thongtinthanhtoan" >Thanh toán</a><span> </div>
     <div class="step "> <span><a href="index.php?quanly=donhangdadat" >Đơn hàng đang giao</a><span> </div>
   </div>
@@ -32,9 +32,9 @@
      }
     ?>
     <div class="col-md-8">
-      <h4>Thông tin vận chuyển và giỏ hàng</h4>
+      <h4>Thông tin địa chỉ nhận và giỏ hàng</h4>
       <ul>
-        <li>Họ và tên vận chuyển: <b><?php echo $name ?></b></li>
+        <li>Họ và tên: <b><?php echo $name ?></b></li>
         <li>Số điện thoại: <b><?php echo $phone ?></b></li>
         <li>Địa chỉ: <b><?php echo $address ?></b></li>
         <li>Ghi chú: <b><?php echo $note ?></b></li>
@@ -106,12 +106,12 @@
     </style>
     <div class="col-md-4 hinhthucthanhtoan">
       <h4>Phương thức thanh toán</h4>
-      <div class="form-check">
+      <!-- <div class="form-check">
         <input class="form-check-input" type="radio" name="payment" id="exampleRadios1" value="tienmat"  checked>
         <label class="form-check-label" for="exampleRadios1">
          Tiền mặt
         </label>
-      </div>
+      </div> -->
       <div class="form-check">
         <input class="form-check-input" type="radio" name="payment" id="exampleRadios2" value="chuyenkhoan">
         <label class="form-check-label" for="exampleRadios2">

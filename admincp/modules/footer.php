@@ -6,7 +6,7 @@
 </head>
 <div class="container-fluid my-5">
 
-  <footer class="bg-primary text-center text-lg-start text-white">
+  <footer class="bg-dark text-center text-lg-start text-white">
     <!-- Grid container -->
     <div class="container p-4">
       <!--Grid row-->
@@ -20,17 +20,17 @@
 
           <ul class="list-unstyled d-flex flex-row justify-content-center">
             <li>
-              <a class="text-white px-2" href="#!">
+              <a class="text-white px-2" href="https://www.facebook.com/tuanquynh.huynhngoc.7" target="_blank">
                 <i class="fab fa-facebook-square"></i>
               </a>
             </li>
             <li>
-              <a class="text-white px-2" href="#!">
+              <a class="text-white px-2" href="https://instagram.com/tuanquynh2204?igshid=YTQwZjQ0NmI0OA==" target="_blank">
                 <i class="fab fa-instagram"></i>
               </a>
             </li>
             <li>
-              <a class="text-white ps-2" href="#!">
+              <a class="text-white ps-2" href="https://www.youtube.com/channel/UCrSxyYKGw_1MkY8JRhq3UEQ" target="_blank">
                 <i class="fab fa-youtube"></i>
               </a>
             </li>
@@ -41,29 +41,23 @@
 
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4">Animals</h5>
+          <h5 class="text-uppercase mb-4">Security</h5>
 
           <ul class="list-unstyled">
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>When your pet is missing</a>
+              <a href="http://localhost/SECURITY/index.php" class="text-white"></i>Trang chủ</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Recently found</a>
+              <a href="http://localhost/SECURITY/index.php?quanly=tintuc" class="text-white"></i>Tin tức</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>How to adopt?</a>
+              <a href="http://localhost/SECURITY/index.php?quanly=tailieu" class="text-white"></i>Tài liệu</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Pets for adoption</a>
+              <a href="http://localhost/SECURITY/index.php?quanly=sachattt" class="text-white"></i>Sách tham khảo</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Material gifts</a>
-            </li>
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Help with walks</a>
-            </li>
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Volunteer activities</a>
+              <a href="index.php?quanly=danhmucsach&id=3" class="text-white"></i>Luật an ninh mạng</a>
             </li>
           </ul>
         </div>
@@ -71,26 +65,23 @@
 
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4">Animals</h5>
+          <h5 class="text-uppercase mb-4">Security</h5>
 
           <ul class="list-unstyled">
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>General information</a>
+              <a href="index.php?quanly=congdong" class="text-white"></i>Cộng đồng</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>About the shelter</a>
+              <a href="index.php?quanly=khoahoc" class="text-white"></i>Khóa học</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Statistic data</a>
+              <a href="index.php?quanly=dangbai" class="text-white"></i>Đăng bài</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Job</a>
+              <a href="index.php?quanly=lienhe" class="text-white"></i>Liên hệ</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Tenders</a>
-            </li>
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Contact</a>
+              <a href="index.php?quanly=dangnhap" class="text-white"></i>Đăng nhập</a>
             </li>
           </ul>
         </div>
