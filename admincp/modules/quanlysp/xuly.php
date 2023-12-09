@@ -1,5 +1,6 @@
 <?php
 include('../../config/config.php');
+session_start();
 
 
    $tensanpham = $_POST['tensanpham'];
@@ -14,14 +15,15 @@ include('../../config/config.php');
    $noidung = $_POST['noidung'];
    $tinhtrang = $_POST['tinhtrang'];
    $danhmuc = $_POST['danhmuc'];
+   $id_admin = $_SESSION['id_admin'];
    
 
   
 
    if(isset($_POST['themsanpham'])){
    //them
-    $sql_them = "INSERT INTO tbl_sanpham(tensanpham,masp,giasp,soluong,hinhanh,tomtat,noidung,tinhtrang,id_danhmuc) VALUE('".$tensanpham."
-      ','".$masp."','".$giasp."','".$soluong."','".$hinhanh_time."','".$tomtat."','".$noidung."','".$tinhtrang."','".$danhmuc."')";
+    $sql_them = "INSERT INTO tbl_sanpham(tensanpham,masp,giasp,soluong,hinhanh,tomtat,noidung,tinhtrang,id_danhmuc,id_admin) VALUE('".$tensanpham."
+      ','".$masp."','".$giasp."','".$soluong."','".$hinhanh_time."','".$tomtat."','".$noidung."','".$tinhtrang."','".$danhmuc."','".$id_admin."')";
    mysqli_query($mysqli,$sql_them);
    move_uploaded_file($hinhanh_tmp,'uploads/'.$hinhanh_time);
    header('location:../../index.php?action=quanlysp&query=them');
@@ -33,7 +35,7 @@ include('../../config/config.php');
          move_uploaded_file($hinhanh_tmp,'uploads/'.$hinhanh_time);       
          $sql_update = "UPDATE tbl_sanpham SET tensanpham='". $tensanpham."',masp='".$masp."', giasp='". $giasp."',
           soluong='". $soluong."', hinhanh='". $hinhanh_time."', tomtat='". $tomtat."', noidung='". $noidung."', tinhtrang='". $tinhtrang
-         ."',id_danhmuc='". $danhmuc."' WHERE id_sanpham='$_GET[idsanpham]'";
+         ."',id_danhmuc='". $danhmuc."',id_admin ='".$id_admin."' WHERE id_sanpham='$_GET[idsanpham]'";
          $sql = "SELECT * FROM tbl_sanpham WHERE id_sanpham = '$_GET[idsanpham]' LIMIT 1";
          $query = mysqli_query($mysqli,$sql);
          while($row = mysqli_fetch_array($query)){
@@ -42,7 +44,7 @@ include('../../config/config.php');
       }else{
          $sql_update = "UPDATE tbl_sanpham SET tensanpham='". $tensanpham."',masp='".$masp."', giasp='". $giasp."',
           soluong='". $soluong."', tomtat='". $tomtat."', noidung='". $noidung."', tinhtrang='". $tinhtrang
-         ."',id_danhmuc='". $danhmuc."' WHERE id_sanpham='$_GET[idsanpham]'";
+         ."',id_danhmuc='". $danhmuc."',id_admin = '".$id_admin."' WHERE id_sanpham='$_GET[idsanpham]'";
       }
       mysqli_query($mysqli,$sql_update);
       header('location:../../index.php?action=quanlysp&query=them');

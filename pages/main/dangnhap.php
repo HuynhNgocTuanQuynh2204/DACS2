@@ -10,6 +10,7 @@
         $_SESSION['dangky'] = $row_data['tenkhachhang'];
         $_SESSION['email'] = $row_data['email'];
         $_SESSION['id_khachhang'] = $row_data['id_dangky'];
+        $_SESSION['level'] = $row_data['level']; 
         // echo '<script>alert("Đăng nhập thành công")</script>';
     } else {
         echo '<p style="color:red">Mật khẩu hoặc tài khoản sai. Vui lòng đăng nhập lại. </p>';
@@ -40,6 +41,9 @@
                         <div class="form-group">
                             <label for="password">Mật khẩu</label>
                             <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu...">
+                        </div>
+                        <div class="form-group">
+                            <a href="index.php?quanly=quenmatkhau">Quên mật khẩu ?</a>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary btn-block" name="dangnhap" value="Đăng nhập">

@@ -26,9 +26,15 @@
             elseif($tam =='khoahoc'){
                 include("main/khoahoc.php");
             }
-            // elseif($tam =='code'){
-            //     include("main/code.php");
-            // }
+            elseif($tam =='quenmatkhau'){
+                include("main/quenmatkhau.php");
+            }
+            elseif($tam =='datlaimatkhau'){
+                include("main/datlaimatkhau.php");
+            }
+            elseif($tam =='quanlytaikhoan'){
+                include("main/quanlytaikhoan.php");
+            }
             elseif($tam =='sachattt'){
                 include("main/sachattt.php");
                 

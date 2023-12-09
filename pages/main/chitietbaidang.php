@@ -7,7 +7,8 @@
        $row_bd_title = mysqli_fetch_array($query_pro_bd);
        
 ?>
-<b><?php echo  $row_bd_title['tenkhachhang']  ?></b>: <?php echo  $row_bd_title['thoigian']  ?>
+<b><?php echo  $row_bd_title['tenkhachhang']  ?></b>: <?php echo  $row_bd_title['thoigian']  ?> 
+<p  style="text-align: center;padding: 15px 0px;"><a class="btn btn-danger" href="index.php?quanly=quanlybaidang"><-BACK</a></p>
 
 <div class="py-5">
     <div class="container">

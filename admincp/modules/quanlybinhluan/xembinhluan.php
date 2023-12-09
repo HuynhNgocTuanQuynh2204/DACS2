@@ -35,3 +35,4 @@ $query_lietke_cm_bd = mysqli_query($mysqli, $sql_lietke_cm_bd);
     </tr>
   <?php } ?>
 </table>
+<p  style="text-align: center;padding: 15px 0px;"><a class="btn btn-danger" href="index.php?action=quanlybinhluan&query=lietke "><-BACK</a></p>

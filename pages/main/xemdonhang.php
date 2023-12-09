@@ -6,6 +6,7 @@
  ORDER BY tbl_cart_details.id_cart_details DESC";
  $query_lietke_dh =mysqli_query($mysqli,$sql_lietke_dh);
 ?>
+<p  style="text-align: center;padding: 15px 0px;"><a class="btn btn-danger" href="index.php?quanly=lichsudonhang"><-BACK</a></p>
 <div class="container">
     <div class="table-responsive">
           <table style="width: 100%;" border="1" style="border-collapse: collapse;">

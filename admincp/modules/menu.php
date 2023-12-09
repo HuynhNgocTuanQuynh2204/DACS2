@@ -44,7 +44,7 @@ body {
         <a class="nav-link" href="index.php?action=quanlydonhang&query=lietke">Quản lý đơn hàng</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="index.php?action=thongtinweb&query=them">Thông tin liên hệ</a>
+        <a class="nav-link" href="index.php?action=thongtinweb&query=them">Liên hệ</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="index.php?action=quanlybaidang&query=lietke">Quản lý bài đăng</a>
@@ -54,6 +54,9 @@ body {
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="index.php?action=quanlywebsite&query=them">Slider</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php?action=quantri&query=them">Quản trị</a>
       </li>
     </ul>
   </div>

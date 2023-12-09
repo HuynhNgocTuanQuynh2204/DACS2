@@ -7,27 +7,39 @@
     $count = mysqli_num_rows($row);
     if ($count>0){
         $sql_update = mysqli_query($mysqli,"UPDATE tbl_dangky SET  matkhau ='".$matkhau_moi."'");
-        echo '<p style="color:green">Mật khẩu đã được thay đổi</p>';
+        echo '<p style="color:green;text-align:center;">Mật khẩu đã được thay đổi</p>';
     }else{
-        echo '<p style="color:red">Mật khẩu cũ không đúng vui lòng nhập lại</p>';
+        echo '<p style="color:red;text-align:center;">Mật khẩu cũ không đúng vui lòng nhập lại</p>';
     }
   }
 ?>
 <form action="" method="POST">
-    <table border="1" class="table-login" style="text-align: center;border-collapse: collapse;">
-        <tr>
-            <td colspan="2" ><h3>Đổi mật khẩu</h3></td>
-        </tr>
-        <tr>
-            <td>Mật khẩu cũ</td>
-            <td><input type="password" name="password_cu"></td>
-        </tr>
-        <tr>
-            <td>Mật khẩu mới</td>
-            <td><input type="password" name="password_moi"></td>
-        </tr>
-        <tr>
-        <td colspan="2"><input type="submit" name="doimatkhau" value="Đổi mật khẩu"></td>
-        </tr>
-    </table>
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Đổi mật khẩu</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="password">Mật khẩu cũ</label>
+                            <input type="password" class="form-control" name="password_cu" id="password" placeholder="Mật khẩu cũ...">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mật khẩu mới</label>
+                            <input type="password" class="form-control" name="password_moi" id="password" placeholder="Mật khẩu mới...">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-block" name="doimatkhau" value="Đổi mật khẩu">
+                        </div>
+                        <div class="form-group text-center">
+                            <a href="index.php?quanly=quanlytaikhoan">Quản lí tài khoản </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </form>

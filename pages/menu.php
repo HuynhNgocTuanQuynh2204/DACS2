@@ -15,6 +15,7 @@
         unset($_SESSION['dangky']);
         unset($_SESSION['email']);
         unset($_SESSION['id_khachhang']);
+        header('location:index.php?quanly=dangnhap');
     }
 ?>
 <style>
@@ -23,8 +24,17 @@
     top: 0;
     width: 100%;
     z-index: 1000;
+  
 }
-
+.bell-icon {
+      color: #FF0000; 
+    }
+    .dropdown-menu {
+      display: none;
+    }
+    .notification-item {
+      cursor: pointer;
+    }
 
 </style>
 
@@ -104,6 +114,13 @@
                  <li class="nav-item"><a  class="nav-link" href="index.php?dangxuat=1">Đăng xuất</a></li>
                  <li class="nav-item"><a  class="nav-link" href="index.php?quanly=thaydoimatkhau">Đổi mật khẩu</a></li>
                  <li class="nav-item"><a  class="nav-link" href="index.php?quanly=lichsudonhang">Lịch sử đơn hàng</a></li>
+                 <li><?php 
+                       if(isset($_SESSION['level']) && $_SESSION['level'] == "1") { ?>
+                                  <a class="btn btn-danger" href="http://localhost/SECURITY/admincp/login.php" target="_blank">ADMIN</a></b>
+                                <?php
+                                  }
+                         ?></li>
+ 
                  <?php
                  }else{
                  ?>

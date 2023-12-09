@@ -1,6 +1,6 @@
 <?php
 include('../../config/config.php');
-
+session_start();
 
    $tenlienhe= $_POST['tenlienhe'];
    $facebook = $_POST['facebook'];
@@ -16,17 +16,18 @@ include('../../config/config.php');
    $sdt = $_POST['sdt'];
    $mail = $_POST['mail'];
    $id = $_GET['id'];
+   $id_admin = $_SESSION['id_admin'];
    if(isset($_POST['themlienhe'])){
    //them
-    $sql_them = "INSERT INTO tbl_lienhe(tenlienhe,chuyennganh,facebook,youtube,instagram,github,hinhanh) VALUE('".$tenlienhe."
-      ','".$chuyennganh."','".$facebook."','".$youtube."','".$instagram."','".$github."','".$hinhanh_time."')";
+    $sql_them = "INSERT INTO tbl_lienhe(tenlienhe,chuyennganh,facebook,youtube,instagram,github,hinhanh,id_admin) VALUE('".$tenlienhe."
+      ','".$chuyennganh."','".$facebook."','".$youtube."','".$instagram."','".$github."','".$hinhanh_time."','".$id_admin."')";
    mysqli_query($mysqli,$sql_them);
    move_uploaded_file($hinhanh_tmp,'uploads/'.$hinhanh_time);
    header('location:../../index.php?action=thongtinweb&query=them');
    
    
    }elseif(isset($_POST['lienhe'])){
-      $sql_update = "UPDATE tbl_lh SET duong='". $duong."',sdt='". $sdt."',mail='". $mail."' WHERE id_lh='".$id."'";
+      $sql_update = "UPDATE tbl_lh SET duong='". $duong."',sdt='". $sdt."',mail='". $mail."',id_admin = '".$id_admin."' WHERE id_lh='".$id."'";
       mysqli_query($mysqli,$sql_update);
       header('location:../../index.php?action=thongtinweb&query=them');
    }
@@ -35,7 +36,7 @@ include('../../config/config.php');
       if($hinhanh !=''){
          move_uploaded_file($hinhanh_tmp,'uploads/'.$hinhanh_time);       
          $sql_update = "UPDATE tbl_lienhe SET tenlienhe='". $tenlienhe."',chuyennganh='".$chuyennganh."', facebook='". $facebook."',
-          youtube='". $youtube."',instagram='". $instagram."',github='". $github."', hinhanh='". $hinhanh_time."'
+          youtube='". $youtube."',instagram='". $instagram."',github='". $github."', hinhanh='". $hinhanh_time."',id_admin = '".$id_admin."'
            WHERE id_lienhe='$_GET[idlienhe]'";
          $sql = "SELECT * FROM tbl_lienhe WHERE id_lienhe = '$_GET[idlienhe]' LIMIT 1";
          $query = mysqli_query($mysqli,$sql);
@@ -44,7 +45,7 @@ include('../../config/config.php');
          }
       }else{
          $sql_update = "UPDATE tbl_lienhe SET tenlienhe='". $tenlienhe."',chuyennganh='".$chuyennganh."', facebook='". $facebook."',
-         youtube='". $youtube."',instagram='". $instagram."',github='". $github."'
+         youtube='". $youtube."',instagram='". $instagram."',github='". $github."',id_admin = '".$id_admin."'
           WHERE id_lienhe='$_GET[idlienhe]'";
       }
       mysqli_query($mysqli,$sql_update);

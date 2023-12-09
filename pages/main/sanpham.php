@@ -144,8 +144,15 @@
                             echo "<p class='card-text'><strong>Đánh giá:</strong> " . $row['sosao'] . " sao</p>";
                             echo "<p class='card-text'><strong>Bình luận:</strong> " . $row['noidung'] . "</p>";
                             echo '<img class="img img-responsive" width="auto" height="100px" src="anhcm/' . $row['hinhanh'] . '">';
+                            //admin
+                            echo "<div class='admin-reply mt-3'>";
+                            echo "<p class='card-text'>" . $row['thoigian'] . ": <strong style='color:red;'>ADMIN</strong></p>";
+                            echo "<p class='card-text'><strong>Bình luận:</strong> Cảm ơn bạn đã đánh giá sản phẩm. Nếu có bất kì vấn đề
+                            gì xin vui lòng phản hồi với chúng tôi qua </p>";
+                            echo "</div>";
+
                             if (isset($_SESSION['id_khachhang'])) {
-                                // Lấy id người đăng nhập
+                            
                                 $id_nguoidung = $_SESSION['id_khachhang'];
                             
                                 // Kiểm tra xem người đăng nhập có phải là người bình luận không

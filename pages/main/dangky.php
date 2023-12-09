@@ -5,23 +5,17 @@
     $dienthoai = $_POST['dienthoai'];
     $matkhau =md5($_POST['matkhau']);
     $diachi = $_POST['diachi'];
-    $sql_dangky = mysqli_query($mysqli,"INSERT INTO tbl_dangky (tenkhachhang,email,diachi,matkhau,dienthoai) 
-    VALUES('". $tenkhachhang."','". $email."','".$diachi."','".$matkhau."','".$dienthoai."')");
+    $level = 3;
+    $sql_dangky = mysqli_query($mysqli,"INSERT INTO tbl_dangky (tenkhachhang,email,diachi,matkhau,dienthoai,level) 
+    VALUES('". $tenkhachhang."','". $email."','".$diachi."','".$matkhau."','".$dienthoai."','".$level."')");
     if($sql_dangky){
         echo '<p style="color:green">Bạn đã đăng kí thành công</p>';
-        $_SESSION['dangky']=$tenkhachhang;
-        $_SESSION['email']=$email;
-        $_SESSION['id_khachhang']=mysqli_insert_id($mysqli);
-
+    }else{
+        echo '<p style="color:red">Đăng ký thất bại</p>';
     }
   }
 ?>
-<script>
-    // Kiểm tra xem session có tồn tại hay không
-    if ("<?php echo isset($_SESSION['dangky']); ?>" === "1") {
-        window.location.href = "index.php?quanly=giohang"; 
-    }
-</script>
+
 <h6 style="text-align: center;text-transform: uppercase;font-weight: bold;">Đăng kí thành viên</h6>
 <style>
     table.dangky tr td {

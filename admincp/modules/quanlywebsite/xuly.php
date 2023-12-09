@@ -1,6 +1,7 @@
 <?php
 include('../../config/config.php');
 include("../../../carbon/autoload.php");
+session_start();
 use Carbon\Carbon;
 $now = Carbon::now('Asia/Ho_Chi_Minh');
 $now->format('Y-m-d H:i:s');
@@ -10,20 +11,21 @@ $now->format('Y-m-d H:i:s');
    $hinhanh_time = time().'_'.$hinhanh;
    $thongtin = $_POST['thongtin'];
    $link = $_POST['link'];
+   $id_admin = $_SESSION['id_admin'];
    if(isset($_POST['themslide'])){
    //them
-    $sql_themslide = "INSERT INTO tbl_trangchu(hinhanh,link,thoigian) VALUE('".$hinhanh_time."','".$link."','".$now."')";
+    $sql_themslide = "INSERT INTO tbl_trangchu(hinhanh,link,thoigian,id_admin) VALUE('".$hinhanh_time."','".$link."','".$now."','".$id_admin."')";
    mysqli_query($mysqli,$sql_themslide);
    move_uploaded_file($hinhanh_tmp,'uploads/'.$hinhanh_time);
    header('location:../../index.php?action=quanlywebsite&query=them');
    
    
    }elseif(isset($_POST['themshow'])){
-      $sql_themshow = "INSERT INTO tbl_show(thongtin,thoigian) VALUE('".$thongtin."','".$now."')";
+      $sql_themshow = "INSERT INTO tbl_show(thongtin,thoigian,id_admin) VALUE('".$thongtin."','".$now."','".$id_admin."')";
       mysqli_query($mysqli,$sql_themshow);
       header('location:../../index.php?action=quanlywebsite&query=them');
    }elseif(isset($_POST['suashow'])){
-      $sql_suashow= "UPDATE tbl_show SET thongtin='".$thongtin."',thoigian='".$now."'
+      $sql_suashow= "UPDATE tbl_show SET thongtin='".$thongtin."',thoigian='".$now."',id_admin = '".$id_admin."'
       WHERE id_show='$_GET[idshow]'";
       mysqli_query($mysqli,$sql_suashow);
       header('location:../../index.php?action=quanlywebsite&query=them');
@@ -36,7 +38,7 @@ $now->format('Y-m-d H:i:s');
       //sua
       if($hinhanh !=''){
          move_uploaded_file($hinhanh_tmp,'uploads/'.$hinhanh_time);       
-         $sql_update = "UPDATE tbl_trangchu SET hinhanh='". $hinhanh_time."',link='".$link."',thoigian='". $now."'
+         $sql_update = "UPDATE tbl_trangchu SET hinhanh='". $hinhanh_time."',link='".$link."',thoigian='". $now."',id_admin = '".$id_admin."'
            WHERE id='$_GET[idslide]'";
          $sql = "SELECT * FROM tbl_trangchu WHERE id = '$_GET[idslide]' LIMIT 1";
          $query = mysqli_query($mysqli,$sql);
@@ -44,7 +46,7 @@ $now->format('Y-m-d H:i:s');
             unlink('uploads/'.$row['hinhanh']);
          }
       }else{
-         $sql_update = "UPDATE tbl_trangchu SET link='".$link."',thoigian='". $now."'
+         $sql_update = "UPDATE tbl_trangchu SET link='".$link."',thoigian='". $now."',id_admin = '".$id_admin."'
           WHERE id='$_GET[idslide]'";
       }
       mysqli_query($mysqli,$sql_update);

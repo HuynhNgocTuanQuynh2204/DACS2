@@ -55,7 +55,7 @@ $query_lietke_dh = mysqli_query($mysqli, $sql_lietke_dh);
                 <td>
                   <?php
                   if ($row['cart_status'] == 0) {
-                    echo '<b style="color:blue">Đơn hàng đã gửi đến địa chỉ nhận</b>';
+                    echo ' <a class="btn btn-danger" href="pages/main/xulydonhang.php?cart_status=2&code='.$row['code_cart'].'">Đơn hàng đã gửi đến địa chỉ nhận.Vui lòng xác nhận</a>';
                   }else{
                     echo'<b style="color:violet">Đã nhận hàng</b>';
                   }

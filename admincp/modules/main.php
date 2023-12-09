@@ -38,6 +38,9 @@
                 include("modules/quanlysp/them.php");
                 include("modules/quanlysp/lietke.php");
 
+            } else if($tam =='quantri' && $query == 'them'){
+                include("modules/quantri/them.php");
+                include("modules/quantri/lietke.php");
            
             }else if($tam =='quanlybinhluan' && $query == 'lietke'){
                     include("modules/quanlybinhluan/lietke.php");

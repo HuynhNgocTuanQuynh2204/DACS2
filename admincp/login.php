@@ -10,6 +10,7 @@ if (isset($_POST['dangnhap'])) {
     $count = mysqli_num_rows($row);
     if ($count > 0) {
          $row_data = mysqli_fetch_array($row);
+         $_SESSION['name'] = $row_data['name'];
         $_SESSION['dangnhap'] = $row_data['username'];
         $_SESSION['id_admin'] = $row_data['id_admin'];
         header('location:index.php');
@@ -25,7 +26,7 @@ if (isset($_POST['dangnhap'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập admin</title>
+    <title>Đăng nhập </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
      body {
@@ -48,7 +49,7 @@ if (isset($_POST['dangnhap'])) {
     <form action="" method="POST">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Đăng nhập Admin</h3>
+                <h3 class="card-title">Đăng nhập quyền quản trị</h3>
             </div>
             <div class="card-body">
                 <div class="form-group">
@@ -61,6 +62,9 @@ if (isset($_POST['dangnhap'])) {
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary btn-block" name="dangnhap" value="Đăng nhập">
+                </div>
+                <div class="form-group text-center">
+                            <a href="quenmatkhau.php">Quên mật khẩu</a>
                 </div>
             </div>
         </div>
