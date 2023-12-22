@@ -1,6 +1,9 @@
+<h6 style="text-align: center; text-transform: uppercase; font-weight: bold;">Xem đơn hàng đã giao và xác nhận đơn hàng tại đây <a class="btn btn-primary" href="index.php?quanly=donhangdadat">Xem ngay-></a></h6>
 <?php
 $id_khachhang = $_SESSION['id_khachhang'];
-$sql_lietke_dh = "SELECT * FROM tbl_cart, tbl_dangky WHERE tbl_cart.id_khachhang = tbl_dangky.id_dangky AND tbl_cart.id_khachhang = '$id_khachhang' ORDER BY tbl_cart.id_cart DESC";
+$sql_lietke_dh = "SELECT * FROM tbl_cart, tbl_dangky,tbl_shipping WHERE tbl_cart.id_khachhang = tbl_dangky.id_dangky
+AND tbl_cart.cart_shipping = tbl_shipping.id_shipping
+AND tbl_cart.id_khachhang = '$id_khachhang' ORDER BY tbl_cart.id_cart DESC";
 $query_lietke_dh = mysqli_query($mysqli, $sql_lietke_dh);
 ?>
 <div class="container">
@@ -27,7 +30,7 @@ $query_lietke_dh = mysqli_query($mysqli, $sql_lietke_dh);
               <td><?php echo $i ?></td>
               <td><?php echo $row['code_cart'] ?></td>
               <td><?php echo $row['tenkhachhang'] ?></td>
-              <td><?php echo $row['diachi'] ?></td>
+              <td><?php echo $row['address'] ?></td>
               <td><?php echo $row['email'] ?></td>
               <td><?php echo $row['dienthoai'] ?></td>
               <td>

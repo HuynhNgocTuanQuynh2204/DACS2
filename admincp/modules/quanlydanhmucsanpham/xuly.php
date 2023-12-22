@@ -13,7 +13,7 @@ session_start();
    
    
    }elseif (isset($_POST['suadanhmuc'])){
-      $sql_update = "UPDATE tbl_danhmuc SET tendanhmuc='". $tenloaisanpham."',thutu='".$thutu."',id_admind = '".$id_admin."' WHERE id_danhmuc='$_GET[iddanhmuc]'";
+      $sql_update = "UPDATE tbl_danhmuc SET tendanhmuc='". $tenloaisanpham."',thutu='".$thutu."',id_admin = '".$id_admin."' WHERE id_danhmuc='$_GET[iddanhmuc]'";
       mysqli_query($mysqli,$sql_update);
       header('location:../../index.php?action=quanlydanhmucsanpham&query=them');
    
