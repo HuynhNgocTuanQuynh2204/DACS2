@@ -13,6 +13,7 @@ if (isset($_POST['dangnhap'])) {
          $_SESSION['name'] = $row_data['name'];
         $_SESSION['dangnhap'] = $row_data['username'];
         $_SESSION['id_admin'] = $row_data['id_admin'];
+        $_SESSION['level'] = $row_data['admin_status'];
         header('location:index.php');
     } else {
         echo '<script> alert("Tài khoản hoặc mật khẩu không đúng vui lòng nhập lại");</script>';

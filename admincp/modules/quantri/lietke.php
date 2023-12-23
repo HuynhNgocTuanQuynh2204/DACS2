@@ -19,7 +19,7 @@
     $i=0;
     while($row = mysqli_fetch_array($query_lietke_am)){
       $i++;  
-      if($row['admin_status']!= 1){
+      if($row['admin_status']!= 0){
     ?>
   <tr>
     <td><?php echo $i ?></td>
@@ -27,9 +27,9 @@
     <td><?php echo $row['phone'] ?></td>
     <td><?php echo $row['username'] ?></td>
     <td><?php 
-        if($row['admin_status'] ==2){
+        if($row['admin_status'] ==1){
           echo '<p style="color:yellow">Quản lý </p>';
-        } elseif($row['admin_status'] ==3){
+        } elseif($row['admin_status'] ==2){
           echo '<p style="color:green">Nhân viên </p>';
         }
     ?></td>

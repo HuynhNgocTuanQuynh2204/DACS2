@@ -115,11 +115,19 @@
                  <li class="nav-item"><a  class="nav-link" href="index.php?quanly=thaydoimatkhau">Đổi mật khẩu</a></li>
                  <li class="nav-item"><a  class="nav-link" href="index.php?quanly=lichsudonhang">Lịch sử đơn hàng</a></li>
                  <li><?php 
-                       if(isset($_SESSION['level']) && $_SESSION['level'] == "1") { ?>
+                       if(isset($_SESSION['level']) && $_SESSION['level'] == "0") { ?>
                                   <a class="btn btn-danger" href="http://localhost/SECURITY/admincp/login.php" target="_blank">ADMIN</a></b>
-                                <?php
-                                  }
-                         ?></li>
+                        <?php
+                        }elseif($_SESSION['level']=="1") { 
+                         ?>
+                          <a class="btn btn-danger" href="http://localhost/SECURITY/admincp/login.php" target="_blank">Quản lý</a></b>
+                         <?php
+                        }elseif($_SESSION['level']=="2"){?>
+                         <a class="btn btn-danger" href="http://localhost/SECURITY/admincp/login.php" target="_blank">Nhân viên</a></b>
+                        <?php
+                        }
+                        ?>
+                        ?></li>
  
                  <?php
                  }else{

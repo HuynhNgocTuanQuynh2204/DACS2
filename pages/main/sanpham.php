@@ -116,8 +116,27 @@
     </div>
   </div> <!-- END tabs-content -->
 </div> <!-- END tabs -->
+<?php
+  $mysql_sanpham = "SELECT * FROM tbl_sanpham WHERE id_danhmuc ='$row_chitiet[id_danhmuc]'";
+  $query_sanpham = mysqli_query($mysqli,$mysql_sanpham);
+?>
+   <h1 style="text-align: center; font-size: 36px; color: #333; margin-bottom: 20px;">
+  Sản phẩm có liên quan
+   <div class="slider">
+      <div class="slide-track">
+        <?php 
+            while($row_sanpham = mysqli_fetch_array($query_sanpham)){
+        ?>
+        <div class="slide1">
+        <a href="index.php?quanly=sanpham&id=<?php echo $row_sanpham['id_sanpham']?>">
+          <img src="admincp/modules/quanlysp/uploads/<?php echo $row_sanpham['hinhanh'] ?>" alt="<?php echo $row_sanpham['tensanpham'] ?>">
+          </a>
+        </div>
+        <?php
+            }
+            ?>
+      </div>
 </div>
-
 <?php
         }
     ?>

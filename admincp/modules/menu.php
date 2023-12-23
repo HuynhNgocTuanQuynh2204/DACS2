@@ -55,9 +55,15 @@ body {
       <li class="nav-item active">
         <a class="nav-link" href="index.php?action=quanlywebsite&query=them">Slider</a>
       </li>
+      <?php
+         if($_SESSION['level'] == 0 ){
+      ?>
       <li class="nav-item active">
         <a class="nav-link" href="index.php?action=quantri&query=them">Quản trị</a>
       </li>
+      <?php
+         }
+         ?>
     </ul>
   </div>
 </nav>

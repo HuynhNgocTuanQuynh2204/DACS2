@@ -41,7 +41,10 @@
             } else if($tam =='quantri' && $query == 'them'){
                 include("modules/quantri/them.php");
                 include("modules/quantri/lietke.php");
-           
+
+            } else if($tam =='quantri' && $query == 'sua'){
+                include("modules/quantri/sua.php");
+
             }else if($tam =='quanlybinhluan' && $query == 'lietke'){
                     include("modules/quanlybinhluan/lietke.php");
             
