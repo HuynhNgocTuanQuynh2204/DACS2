@@ -11,7 +11,7 @@ if ($page == '' || $page == 1) {
 } else {
     $begin = ($page * 9) - 9;
 }
-$sql_pro_tailieu = "SELECT * FROM tbl_tailieu ORDER BY tbl_tailieu.id_tailieu LIMIT $begin,9 ";
+$sql_pro_tailieu = "SELECT * FROM tbl_tailieu ORDER BY tbl_tailieu.id_tailieu DESC LIMIT $begin,9 ";
 $query_pro_tailieu = mysqli_query($mysqli, $sql_pro_tailieu);
 ?>
 

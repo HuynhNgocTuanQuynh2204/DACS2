@@ -11,7 +11,7 @@ if ($page == '' || $page == 1) {
 } else {
     $begin = ($page * 12) - 12;
 }
-$sql_pro_sach = "SELECT * FROM tbl_sach ORDER BY id_sach LIMIT $begin,12 ";
+$sql_pro_sach = "SELECT * FROM tbl_sach ORDER BY id_sach DESC LIMIT $begin,12 ";
 $query_pro_sach = mysqli_query($mysqli, $sql_pro_sach);
 ?>
 

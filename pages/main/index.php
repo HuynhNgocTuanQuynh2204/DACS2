@@ -6,7 +6,7 @@
 </head>
 <body>
 <?php
-  $sql = "SELECT * FROM tbl_trangchu";
+  $sql = "SELECT * FROM tbl_trangchu ORDER BY id DESC";
   $query = mysqli_query($mysqli,$sql);
 ?>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="3000">

@@ -11,7 +11,7 @@ if ($page == '' || $page == 1) {
 } else {
     $begin = ($page * 12) - 12;
 }
-$sql_pro_bv = "SELECT * FROM tbl_baiviet WHERE tinhtrang=1 ORDER BY id_baiviet LIMIT $begin,12";
+$sql_pro_bv = "SELECT * FROM tbl_baiviet WHERE tinhtrang=1 ORDER BY id_baiviet DESC LIMIT $begin,12";
 $query_pro_bv = mysqli_query($mysqli, $sql_pro_bv);
 ?>
 

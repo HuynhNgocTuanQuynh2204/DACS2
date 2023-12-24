@@ -1,5 +1,5 @@
 <?php
-  $sqli = "SELECT * FROM tbl_show ORDER BY id_show ASC";
+  $sqli = "SELECT * FROM tbl_show ORDER BY id_show DESC";
   $query = mysqli_query($mysqli,$sqli); 
 ?>
 

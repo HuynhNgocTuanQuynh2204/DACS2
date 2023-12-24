@@ -1,6 +1,7 @@
 <?php
-       $sql_pro_bd ="SELECT * FROM tbl_dangbai,tbl_dangky  WHERE tbl_dangbai.id_user= tbl_dangky.id_dangky 
-       ORDER BY tbl_dangbai.id_baidang = '$_GET[id]' LIMIT 1";
+      $id = $_GET['id'];
+      $sql_pro_bd = "SELECT * FROM tbl_dangbai, tbl_dangky WHERE tbl_dangbai.id_user = tbl_dangky.id_dangky
+       AND tbl_dangbai.id_baidang = $id LIMIT 1";
        $query_pro_bd = mysqli_query($mysqli,$sql_pro_bd);
 
        $query_pro_bd_all = mysqli_query($mysqli,$sql_pro_bd);
@@ -10,7 +11,7 @@
 ?>
 <b><?php echo  $row_bd_title['tenkhachhang']  ?></b>: <?php echo  $row_bd_title['thoigian']  ?>
 <div style="text-align: center; text-transform: uppercase; display: flex; justify-content: center;">
-<h3 >
+<h3>
     <?php echo $row_bd_title['tenbaidang'] ?>
 </h3>
 </div>

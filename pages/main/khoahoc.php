@@ -10,7 +10,7 @@
             $begin =($page*12)-12;
         }
        $sql_pro ="SELECT * FROM tbl_sanpham 
-       ORDER BY id_sanpham LIMIT $begin,12";
+       ORDER BY id_sanpham DESC LIMIT $begin,12";
        $query_pro = mysqli_query($mysqli,$sql_pro);
       
 ?>
