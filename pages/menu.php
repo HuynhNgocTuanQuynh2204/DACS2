@@ -49,9 +49,14 @@
       <li class="nav-item active">
         <a class="nav-link" href="index.php">Trang chủ <span class="sr-only">(current)</span></a>
       </li>
+      <?php
+       if(!isset($_SESSION['dangnhap'])){?>
       <li class="nav-item">
         <a class="nav-link" href="index.php?quanly=giohang">Giỏ hàng</a>
       </li>
+      <?php
+       }
+       ?>
       <li class="nav-item"><a  class="nav-link" href="index.php?quanly=tintuc">Tin tức</a></li>
       <li class="nav-item"><a  class="nav-link" href="index.php?quanly=sachattt">Sách tham khảo</a></li>
       <li class="nav-item"><a  class="nav-link" href="index.php?quanly=khoahoc">Khóa học</a></li>
@@ -109,25 +114,31 @@
         </div>
       </li>
       <?php
-                 if(isset($_SESSION['dangky'])){
+               if(isset($_SESSION['dangky']) || isset($_SESSION['dangnhap'])){
                  ?>
-                 <li class="nav-item"><a  class="nav-link" href="index.php?dangxuat=1">Đăng xuất</a></li>
                  <li class="nav-item"><a  class="nav-link" href="index.php?quanly=thaydoimatkhau">Đổi mật khẩu</a></li>
-                 <li class="nav-item"><a  class="nav-link" href="index.php?quanly=lichsudonhang">Lịch sử đơn hàng</a></li>
+                 <?php
+                  if(!isset($_SESSION['dangnhap'])){?>
+                  <li class="nav-item"><a  class="nav-link" href="index.php?quanly=lichsudonhang">Lịch sử đơn hàng</a></li>
+                  <li class="nav-item"><a  class="nav-link" href="index.php?quanly=thongbao"><i style="color: #FF0000;" class="fa-solid fa-bell"></i></a></li>
+                  <li class="nav-item"><a  class="nav-link" href="index.php?dangxuat=1">Đăng xuất</a></li>
+                  <?php
+                  }
+                  ?>
                  <li><?php 
                        if(isset($_SESSION['level']) && $_SESSION['level'] == "0") { ?>
-                                  <a class="btn btn-danger" href="http://localhost/SECURITY/admincp/login.php" target="_blank">ADMIN</a></b>
+                                  <a class="btn btn-danger" href="http://localhost/SECURITY/admincp/index.php" >ADMIN</a></b>
                         <?php
                         }elseif($_SESSION['level']=="1") { 
                          ?>
-                          <a class="btn btn-danger" href="http://localhost/SECURITY/admincp/login.php" target="_blank">Quản lý</a></b>
+                          <a class="btn btn-danger" href="http://localhost/SECURITY/admincp/index.php" >Quản lý</a></b>
                          <?php
                         }elseif($_SESSION['level']=="2"){?>
-                         <a class="btn btn-danger" href="http://localhost/SECURITY/admincp/login.php" target="_blank">Nhân viên</a></b>
+                         <a class="btn btn-danger" href="http://localhost/SECURITY/admincp/index.php" >Nhân viên</a></b>
                         <?php
                         }
                         ?>
-                        ?></li>
+                        </li>
  
                  <?php
                  }else{

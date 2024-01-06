@@ -1,5 +1,5 @@
 <?php
- $sql_lietke_sp = "SELECT * FROM tbl_sanpham,tbl_danhmuc WHERE tbl_sanpham.id_danhmuc=tbl_danhmuc.id_danhmuc ORDER BY id_sanpham DESC";
+ $sql_lietke_sp = "SELECT * FROM tbl_sanpham,tbl_danhmuc,tbl_admin WHERE tbl_sanpham.id_danhmuc=tbl_danhmuc.id_danhmuc AND tbl_sanpham.id_admin = tbl_admin.id_admin ORDER BY id_sanpham DESC";
  $query_lietke_sp =   mysqli_query($mysqli,$sql_lietke_sp);
 ?>
 <h6 style="text-align: center;text-transform: uppercase;font-weight: bold;">Liệt kê danh mục sản phẩm</h6>
@@ -14,8 +14,17 @@
     <th>Mã sp</th>
     <th>Tóm tắt</th>
     <th>Trạng thái</th>
+    <?php
+       if($_SESSION['level']!=0){
+    ?>
     <th>Quản lý</th>
-    
+    <?php
+    }else{
+    ?>
+     <th>Người thêm</th>
+    <?php
+    }
+    ?>
   </tr>
   <?php 
     $i=0;
@@ -38,10 +47,20 @@
     }
      ?>
      </td> 
+     <?php
+       if($_SESSION['level']!=0){
+    ?>
     <td>
     <a  class="btn btn-primary"  href="modules/quanlysp/xuly.php?idsanpham=<?php echo  $row['id_sanpham']?>">Xóa</a> ||
     <a  class="btn btn-secondary" href="index.php?action=quanlysp&query=sua&idsanpham=<?php echo  $row['id_sanpham']?>">Sửa</a>
   </td>
+  <?php
+       }else{
+       ?>
+       <td><?php echo $row['name'] ?></td> 
+       <?php
+       }
+       ?>
   </tr>
   <?php } ?>
 </table>

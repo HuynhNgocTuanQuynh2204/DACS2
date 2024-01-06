@@ -6,8 +6,24 @@
 
     $sql = "UPDATE tbl_cart SET cart_status = '$status' WHERE code_cart = '$code'";
     $sql_query = mysqli_query($mysqli, $sql);
- }
- header('location:http://localhost/SECURITY/index.php?quanly=donhangdadat');
+    header('location:http://localhost/SECURITY/index.php?quanly=donhangdadat');
 
+ }else if(isset($_POST['huydonhang'])){
+    $id_cart = $_GET['code'];
+    $lido = $_POST['noidung'];
+
+    $sql_UPDATE = "UPDATE tbl_cart SET cart_status = 4 WHERE id_cart = '$id_cart'";
+    $kq= mysqli_query($mysqli,$sql_UPDATE);
+
+    $sql_trahang = "INSERT INTO tbl_trahang (id_donhang,lido) VALUES ($id_cart,'$lido')";
+    $qr = mysqli_query($mysqli,$sql_trahang);
+
+    if($kq > 0 && $qr >0){
+      header('location:http://localhost/SECURITY/index.php?quanly=donhangdadat');
+    }
+
+
+ }
+ 
 
 ?>

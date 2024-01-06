@@ -9,8 +9,6 @@
 ?>
 <b><?php echo  $row_bd_title['tenkhachhang']  ?></b>: <?php echo  $row_bd_title['thoigian']  ?> 
 <p  style="text-align: center;padding: 15px 0px;"><a class="btn btn-danger" href="index.php?quanly=quanlybaidang"><-BACK</a></p>
-
-<div class="py-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -30,6 +28,9 @@
         </div>
     </div>
  </div>
+<?php
+if($row_bd_title['tinhtrang']==0){?>
+<div class="py-5">
 <div class="py-1">
     <div class="container">
         <div class="row justify-content-center">
@@ -55,6 +56,9 @@
         </div>
     </div>
  </div>
+ <?php
+}
+?>
  <script>
 function load_comment() {
         $.ajax({

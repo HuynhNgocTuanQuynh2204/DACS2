@@ -1,7 +1,7 @@
 <h6 style="text-align: center;text-transform: uppercase;font-weight: bold;">Liệt kê đơn hàng</h6>
 <?php
- $sql_lietke_dh = "SELECT * FROM tbl_cart,tbl_dangky,tbl_shipping WHERE tbl_cart.id_khachhang = tbl_dangky.id_dangky AND tbl_cart.cart_shipping = tbl_shipping.id_shipping 
-  ORDER BY tbl_cart.id_cart DESC";
+ $sql_lietke_dh = "SELECT * FROM tbl_cart,tbl_dangky,tbl_shipping,tbl_cart_details WHERE tbl_cart.id_khachhang = tbl_dangky.id_dangky AND tbl_cart.cart_shipping = tbl_shipping.id_shipping 
+ AND tbl_cart.code_cart = tbl_cart_details.code_cart ORDER BY tbl_cart.id_cart DESC";
  $query_lietke_dh =   mysqli_query($mysqli,$sql_lietke_dh);
 ?>
 
@@ -37,10 +37,19 @@
             echo ' <a class="btn btn-danger" href="modules/quanlydonhang/xuly.php?cart_status=0&code='.$row['code_cart'].'">Đơn hàng mới</a>';
         } elseif($row['cart_status'] == 0){
           echo 'Đã xem';
-        }else{
+        }
+        elseif($row['cart_status'] == 4){
+          echo '<b style="color:green">Yêu cầu hoàn trả: <a href="index.php?action=donhang&query=huydonhang&id=' . $row["id_cart"] . '&code=' . $row["code_cart"] . '&idsp=' . $row["id_sanpham"] . '">Lí do</a></b>';
+        
+        }
+        elseif($row['cart_status'] == 5){
+          echo'<b style="color:blue">Đơn hàng đã được hủy</b>';
+        }
+        else{
           echo'<b style="color:violet">Đã nhận hàng</b>';
         }
         ?>
+       
     </td>
     <td><?php echo $row['thoigian'] ?></td>
     <td>

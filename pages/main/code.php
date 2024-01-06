@@ -10,7 +10,7 @@ if(isset($_POST['add_subreplies'])){
     $reply_msg = $_POST['reply_msg'];
     if(isset($_SESSION['id_khachhang'])) {
       $user_id = $_SESSION["id_khachhang"];
-    $query = "INSERT INTO comment_replies (user_id, comment_id, reply_msg,time) VALUES ('$user_id', '$cmt_id', '$reply_msg','$now')";
+    $query = "INSERT INTO comment_replies (user_id, comment_id, reply_msg,time,tinhtrang) VALUES ('$user_id', '$cmt_id', '$reply_msg','$now',1)";
       $query_run = mysqli_query($mysqli, $query);
   
       if ($query_run) {
@@ -67,7 +67,7 @@ if (isset($_POST['add_reply'])) {
     $reply = $_POST['reply_msg']; 
     if(isset($_SESSION['id_khachhang'])) {
     $user_id = $_SESSION['id_khachhang'];
-    $query = "INSERT INTO comment_replies (user_id, comment_id, reply_msg,time) VALUES ('$user_id', '$cmt_id', '$reply','$now')";
+    $query = "INSERT INTO comment_replies (user_id, comment_id, reply_msg,time,tinhtrang) VALUES ('$user_id', '$cmt_id', '$reply','$now',1)";
     $query_run = mysqli_query($mysqli, $query);
 
     if ($query_run) {
@@ -86,7 +86,7 @@ if(isset($_POST["add_comment"])){
     $post_id = $_POST["post_id"];
     if(isset($_SESSION['id_khachhang'])) {
         $user_id = $_SESSION["id_khachhang"];
-    $comment = "INSERT INTO comments (user_id,post_id, msg,time) VALUES ('$user_id','$post_id', '$msg','$now')";
+    $comment = "INSERT INTO comments (user_id,post_id, msg,time,tt) VALUES ('$user_id','$post_id', '$msg','$now',1)";
     $run = mysqli_query($mysqli, $comment);
     if($run){
         echo "Đã thêm bình luận thành công";

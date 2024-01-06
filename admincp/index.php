@@ -17,7 +17,7 @@
 <?php
    session_start();
    if(!isset($_SESSION['dangnhap'])){
-    header ('location:login.php');
+    header ('location:http://localhost/SECURITY/index.php?quanly=dangnhap');
    }
 ?>
 <body>

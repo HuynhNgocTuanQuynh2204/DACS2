@@ -16,20 +16,37 @@
                 <p>Giá sản phẩm: <?php echo number_format($row_chitiet['giasp'],0,',','.').'vnđ'?></p>
                 <p>Số lượng sp: <?php echo $row_chitiet['soluong']?></p>
                 <p>Danh mục sản phẩm: <?php echo $row_chitiet['tendanhmuc']?></p>
-                <p style="text-align: center;"><input class="themgiohang" name="themgiohang" type="submit" value="Thêm giỏ hàng">
-              </p>
+                <?php
+                if(!isset($_SESSION['dangnhap'])){?>
+                <p style="text-align: center;"><input class="themgiohang" name="themgiohang" type="submit" value="Thêm giỏ hàng"></p>
+                <?php
+                }
+                ?>
     </div>
     </form>
     <div style="text-align: center;">
     <?php
-    if(isset($_SESSION['id_khachhang'])){
-    ?>
-    <button class="btn btn-primary open-form " onclick="displayForm()">Đánh giá sản phẩm</button>
-    <?php
-    }else{
-        echo' <p><a href="index.php?quanly=dangnhap">Bạn cần đăng nhập để có thể đánh giá sản phẩm</a></p>';
+    if(!isset($_SESSION['dangnhap'])){
+            if (isset($_SESSION['id_khachhang']) && isset($_GET['id'])) {
+                $id_khachhang = $_SESSION['id_khachhang'];
+                $id_sanpham = $_GET['id'];
+
+                $sql_check_order = "SELECT * FROM tbl_cart,tbl_cart_details WHERE
+                tbl_cart.code_cart=tbl_cart_details.code_cart AND tbl_cart.cart_status=2 AND
+                tbl_cart.id_khachhang = $id_khachhang AND tbl_cart_details.id_sanpham = $id_sanpham";
+                $result_check_order = mysqli_query($mysqli, $sql_check_order);
+                $num_rows = mysqli_num_rows($result_check_order);
+
+                if ($num_rows > 0) {
+                    // Tài khoản đã mua sản phẩm này, hiển thị nút bình luận
+                    echo '<button class="btn btn-primary open-form" onclick="displayForm()">Đánh giá sản phẩm</button>';
+                }
+            } else {
+                // Tài khoản chưa đăng nhập
+                echo '<p><a href="index.php?quanly=dangnhap">Bạn cần đăng nhập và mua hàng để có thể đánh giá sản phẩm</a></p>';
+            }
     }
-    ?>
+            ?>
 </div>
 
 <!-- Form ẩn ban đầu -->
@@ -140,13 +157,12 @@
 <?php
         }
     ?>
-    <section>
-    <div class="rt-container">
-        <div class="col-rt-12">
-            <div class="Scriptcontent">
-                <div class="feedback">
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="feedback"  style="text-align: left;font-size: 18px;">
                     <h2 style="text-align: center; color: violet;">Bình luận của Người dùng</h2>
-
                     <?php
                     // $id_user = $_SESSION['id_khachhang'];
 
@@ -156,32 +172,36 @@
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             // Hiển thị bình luận
-                            echo "<div class='card mt-3'>";
-                            echo "<div class='card-body'>";
-                            echo "<p class='card-text'><strong>Thời gian bình luận:</strong> " . $row['thoigian'] . "</p>";
-                            echo "<p class='card-text'><strong>ID Người dùng:</strong> " . $row['tenkhachhang'] . "</p>";
-                            echo "<p class='card-text'><strong>Đánh giá:</strong> " . $row['sosao'] . " sao</p>";
-                            echo "<p class='card-text'><strong>Bình luận:</strong> " . $row['noidung'] . "</p>";
-                            echo '<img class="img img-responsive" width="auto" height="100px" src="anhcm/' . $row['hinhanh'] . '">';
-                            //admin
-                            echo "<div class='admin-reply mt-3'>";
-                            echo "<p class='card-text'>" . $row['thoigian'] . ": <strong style='color:red;'>ADMIN</strong></p>";
-                            echo "<p class='card-text'><strong>Bình luận:</strong> Cảm ơn bạn đã đánh giá sản phẩm. Nếu có bất kì vấn đề
-                            gì xin vui lòng phản hồi với chúng tôi qua </p>";
-                            echo "</div>";
+                    ?>
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <p class="card-text"><strong>Thời gian bình luận:</strong> <?php echo $row['thoigian']; ?></p>
+                                    <p class="card-text"><strong>ID Người dùng:</strong> <?php echo $row['tenkhachhang']; ?></p>
+                                    <p class="card-text"><strong>Đánh giá:</strong> <?php echo $row['sosao']; ?> sao</p>
+                                    <p class="card-text"><strong>Bình luận:</strong> <?php echo $row['noidung']; ?></p>
+                                    <img class="img img-responsive" width="auto" height="100px" src="anhcm/<?php echo $row['hinhanh']; ?>">
+                                    <!-- Admin -->
+                                    <div class="admin-reply mt-3">
+                                        <p class="card-text"><?php echo $row['thoigian']; ?>: <strong style="color:red;">ADMIN</strong></p>
+                                        <p class="card-text"><strong>Bình luận:</strong> Cảm ơn bạn đã đánh giá sản phẩm. Nếu có bất kì vấn đề
+                                            gì xin vui lòng phản hồi với chúng tôi qua <a href="index.php?quanly=lienhe">Liên hệ</a> </p>
+                                    </div>
 
-                            if (isset($_SESSION['id_khachhang'])) {
-                            
-                                $id_nguoidung = $_SESSION['id_khachhang'];
-                            
-                                // Kiểm tra xem người đăng nhập có phải là người bình luận không
-                                if ($id_nguoidung == $row['id_user']) {
-                                    // Nếu là người bình luận, hiển thị nút "Xóa bình luận"
-                                    echo "<p class='card-text' style='text-align:center;'> <a class='btn btn-danger' href='index.php?quanly=xulycm&id_comment=" . $row['id_comment'] . "&id_sanpham=" . $row['id_sanpham'] . "'>Xóa bình luận của bạn</a></p>";
-                                }
-                            }
-                            echo "</div>";
-                            echo "</div>";
+                                    <?php
+                                    if (isset($_SESSION['id_khachhang'])) {
+                                        $id_nguoidung = $_SESSION['id_khachhang'];
+                                        // Kiểm tra xem người đăng nhập có phải là người bình luận không
+                                        if ($id_nguoidung == $row['id_user']) {
+                                            // Nếu là người bình luận, hiển thị nút "Xóa bình luận"
+                                    ?>
+                                            <p class="card-text" style="text-align:center;"> <a class="btn btn-danger" href="index.php?quanly=xulycm&id_comment=<?php echo $row['id_comment']; ?>&id_sanpham=<?php echo $row['id_sanpham']; ?>">Xóa bình luận của bạn</a></p>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                    <?php
                         }
                     } else {
                         echo '<p style="text-align: center; color: red;">Chưa có bình luận nào.</p>';

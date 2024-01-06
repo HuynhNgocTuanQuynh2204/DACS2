@@ -42,5 +42,28 @@ if(isset($_GET['cart_status']) && isset($_GET['code'])){
     }
 
     header('location:../../index.php?action=quanlydonhang&query=lietke');
+} else if($_POST['huydonhang']){
+    $id = $_POST['id'];
+    $sql_huydonhang = "UPDATE tbl_cart SET cart_status = 5 WHERE id_cart = '" . $id . "'";
+    $row_huydonhang = mysqli_query($mysqli,$sql_huydonhang);
+    if($row_huydonhang>0){
+        $code_cart = $_POST['code'];
+        $idsp = $_POST['idsp'];
+        $sql_cart = "SELECT * FROM tbl_cart_details WHERE code_cart = '" . $code_cart  . "'";
+        $rowcm =mysqli_query($mysqli,$sql_cart);
+        $qr_cm = mysqli_fetch_array($rowcm);
+        $soluongmua = $qr_cm['soluongmua'];
+
+        $sql_sanpham = "SELECT * FROM tbl_sanpham WHERE id_sanpham = '" .$idsp. "'";
+        $qr_sanpham = mysqli_query($mysqli,$sql_sanpham) ;
+        $qr_sanpham = mysqli_fetch_array($qr_sanpham);
+        $soluongconlai = $qr_sanpham['soluong'];
+
+        $soluongcapnhap = $soluongmua + $soluongconlai;
+        $sql_huydonhang = "UPDATE tbl_sanpham SET soluong = $soluongcapnhap  WHERE id_sanpham = '" .$idsp. "'";
+        $kq_capnhap = mysqli_query($mysqli,$sql_huydonhang);
+        header('location:../../index.php?action=quanlydonhang&query=lietke');
+    }
+  
 }
 ?>

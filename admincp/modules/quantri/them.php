@@ -14,9 +14,6 @@
                                 $matkhau = md5($_POST['password']);
                                 $diachi = $_POST['address'];
                                 $level = $_POST['level'];
-                                $sql_fk = "INSERT INTO tbl_dangky(tenkhachhang,email,diachi,matkhau,dienthoai,level) 
-                                VALUES ('$tentaikhoan',' $email',' $diachi','$matkhau','$phone','$level')";
-                                $row_dk = mysqli_query($mysqli,$sql_fk);
                                 $sql = "INSERT INTO tbl_admin (name,diachi,phone,username,password,admin_status) 
                                 VALUES ('$tentaikhoan','$diachi','$phone','$email','$matkhau','$level')";
                                 $row = mysqli_query($mysqli, $sql);

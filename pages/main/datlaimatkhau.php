@@ -1,22 +1,26 @@
 <?php
-    if (isset($_POST['datlaimatkhau'])) {
-        $matkhau1 = md5($_POST['password1']);
-        $matkhau2 = md5($_POST['password2']);
-        $id = $_GET['id'];
-        if($matkhau1 == $matkhau2){
-            $sql = "UPDATE tbl_dangky SET matkhau = '$matkhau1' WHERE id_dangky = '$id'";
-            $row = mysqli_query($mysqli, $sql);
-            
-            if ($row && mysqli_affected_rows($mysqli) > 0) {
-                echo '<script>alert("Mật khẩu đặt lại thành công");window.location.href = "index.php?quanly=dangnhap";</script>';
-            } else {
-                echo '<p style="color:red;text-align:center">Có lỗi xảy ra. Vui lòng thử lại sau.</p>';
-            }
+if (isset($_POST['datlaimatkhau'])) {
+    $matkhau1 = md5($_POST['password1']);
+    $matkhau2 = md5($_POST['password2']);
+    $id = $_GET['id'];
+    if ($matkhau1 == $matkhau2) {
+        $sql_dk = "UPDATE tbl_dangky SET matkhau = '$matkhau1' WHERE id_dangky = '$id'";
+        $row_dk = mysqli_query($mysqli, $sql_dk);
+
+        $sql_am = "UPDATE tbl_admin SET password = '$matkhau1' WHERE id_admin = '$id'";
+        $row_am = mysqli_query($mysqli, $sql_am);
+
+        if ($row_dk || $row_am)  {   
+            echo '<script>alert("Mật khẩu đặt lại thành công");window.location.href = "index.php?quanly=dangnhap";</script>';
         } else {
-            echo '<p style="color:red;text-align:center">Mật khẩu không khớp. Vui lòng nhập lại!</p>';
+            echo '<p style="color:red;text-align:center">Có lỗi xảy ra. Vui lòng thử lại sau.</p>';
         }
+    } else {
+        echo '<p style="color:red;text-align:center">Mật khẩu không khớp. Vui lòng nhập lại!</p>';
     }
+}
 ?>
+
 
 <script>
     if ("<?php echo isset($_SESSION['dangky']); ?>" === "1") {

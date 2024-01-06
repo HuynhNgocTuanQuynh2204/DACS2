@@ -7,7 +7,7 @@
   <?php
    while($row = mysqli_fetch_array($query_sua_bd)){
    ?>
-  <form method="POST" action="index.php?quanly=xulybaidang&id=<?php echo  $row['id_baidang'] ?>" enctype="multipart/form-data">
+  <form method="POST" action="index.php?quanly=xulybaidang&id=<?php echo  $_GET['id'] ?>" enctype="multipart/form-data">
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">

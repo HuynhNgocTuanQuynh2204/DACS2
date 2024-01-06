@@ -74,7 +74,7 @@
   
    if($cart_query){
       unset($_SESSION['cart']);
-      echo "<h3>Giao dịch thanh toán bằng VNPAY thành công</h3>";
+      echo "<h3>Giao dịch thanh toán bằng MOMO thành công</h3>";
       echo '<p>Vui lòng vào trang <a target="_blank" href="index.php?quanly=lichsudonhang">Lịch sử đơn hàng</a> để xem chi tiết đơn hàng của bạn</p>';
    }else{
       echo 'Giao dịch thất bại';

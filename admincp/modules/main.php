@@ -63,6 +63,10 @@
                 include("modules/quanlydonhang/xemdonhang.php");
             }
 
+            else if($tam =='donhang' && $query == 'huydonhang'){
+                include("modules/quanlydonhang/trahang.php");
+            }
+
             else if($tam =='quanlybaidang' && $query == 'xembaidang'){
                 include("modules/quanlybaidang/xembaidang.php");
             }

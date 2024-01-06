@@ -1,6 +1,6 @@
 <?php
- $sql_lietke_bv = "SELECT * FROM tbl_baiviet,tbl_danhmucbaiviet WHERE tbl_baiviet.id_danhmuc=tbl_danhmucbaiviet.id_danhmucbaiviet
- ORDER BY tbl_baiviet.id_baiviet DESC";
+ $sql_lietke_bv = "SELECT * FROM tbl_baiviet,tbl_danhmucbaiviet,tbl_admin WHERE tbl_baiviet.id_danhmuc=tbl_danhmucbaiviet.id_danhmucbaiviet
+ AND tbl_baiviet.id_admin = tbl_admin.id_admin ORDER BY tbl_baiviet.id_baiviet DESC";
  $query_lietke_bv =   mysqli_query($mysqli,$sql_lietke_bv);
 ?>
 <h6 style="text-align: center;text-transform: uppercase;font-weight: bold;">Liệt kê bài viết</h6>
@@ -12,7 +12,17 @@
     <th>Danh muc</th>
     <th>Tóm tắt</th>
     <th>Trạng thái</th>
+    <?php
+       if($_SESSION['level']!=0){
+    ?>
     <th>Quản lý</th>
+    <?php
+    }else{
+    ?>
+     <th>Người thêm</th>
+    <?php
+    }
+    ?>
     
   </tr>
   <?php 
@@ -33,9 +43,19 @@
     }
      ?>
      </td> 
+     <?php
+       if($_SESSION['level']!=0){
+    ?>
     <td>
     <a  class="btn btn-primary" href="modules/quanlybaiviet/xuly.php?idbaiviet=<?php echo  $row['id_baiviet']?>">Xóa</a> | 
     <a  class="btn btn-secondary" href="index.php?action=quanlybaiviet&query=sua&idbaiviet=<?php echo  $row['id_baiviet']?>">Sửa</a></td>
+    <?php
+       }else{
+       ?>
+       <td><?php echo $row['name'] ?></td> 
+       <?php
+       }
+       ?>
   </tr>
   <?php } ?>
 </table>

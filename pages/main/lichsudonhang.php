@@ -39,6 +39,11 @@ $query_lietke_dh = mysqli_query($mysqli, $sql_lietke_dh);
                   echo '<b style="color:red"> Đơn hàng mới</b>';
                 } elseif($row['cart_status'] == 0) {
                   echo '<b style="color:blue">Đơn hàng đã gửi đến địa chỉ nhận</b>';
+                } elseif($row['cart_status'] == 4) {
+                  echo'<b style="color:green">Đơn hàng đang chờ QTV duyệt hủy</b>';
+                }
+                elseif($row['cart_status'] == 5) {
+                  echo'<b style="color:blue">Đơn hàng đã hủy</b>';
                 }else{
                   echo'<b style="color:violet">Đã nhận hàng</b>';
                 }

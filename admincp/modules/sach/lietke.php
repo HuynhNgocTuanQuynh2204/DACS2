@@ -1,6 +1,6 @@
 <?php
- $sql_lietke_sach = "SELECT * FROM tbl_sach,tbl_danhmucsach WHERE tbl_sach.id_danhmucsach=tbl_danhmucsach.id_danhmucsach 
- ORDER BY id_sach DESC";
+ $sql_lietke_sach = "SELECT * FROM tbl_sach,tbl_danhmucsach,tbl_admin WHERE tbl_sach.id_danhmucsach=tbl_danhmucsach.id_danhmucsach 
+ AND tbl_sach.id_admin = tbl_admin.id_admin ORDER BY tbl_sach.id_sach DESC";
  $query_lietke_sach =   mysqli_query($mysqli,$sql_lietke_sach);
 ?>
 <h6 style="text-align: center;text-transform: uppercase;font-weight: bold;">Liệt kê sách</h6>
@@ -13,8 +13,18 @@
     <th>Danh muc</th>
     <th>Mã sách</th>
     <th>Tóm tắt</th>
+    <?php
+       if($_SESSION['level']!=0){
+    ?>
     <th>Quản lý</th>
-    
+    <?php
+    }else{
+    ?>
+     <th>Người thêm</th>
+    <?php
+    }
+    ?>
+  </tr>
   </tr>
   <?php 
     $i=0;
@@ -29,10 +39,20 @@
     <td><?php echo $row['tendanhmucsach'] ?></td>
     <td><?php echo $row['masach'] ?></td> 
     <td><?php echo $row['tomtat'] ?></td> 
+    <?php
+       if($_SESSION['level']!=0){
+    ?>
     <td>
     <a  class="btn btn-primary" href="modules/sach/xuly.php?idsanpham=<?php echo  $row['id_sach']?>">Xóa</a> ||
     <a  class="btn btn-secondary" href="index.php?action=sach&query=sua&idsanpham=<?php echo  $row['id_sach']?>">Sửa</a>
   </td>
+  <?php
+       }else{
+       ?>
+       <td><?php echo $row['name'] ?></td> 
+       <?php
+       }
+       ?>
   </tr>
   <?php } ?>
 </table>

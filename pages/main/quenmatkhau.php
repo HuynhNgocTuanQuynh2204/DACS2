@@ -1,16 +1,27 @@
 <?php
   if (isset($_POST['timtaikhoan'])){
     $email = $_POST['email'];
-    $sql = "SELECT * FROM tbl_dangky WHERE email = '".$email."' LIMIT 1 ";
-    $row = mysqli_query($mysqli, $sql);
-    $id = mysqli_fetch_array($row);
-    $count = mysqli_num_rows($row);
-    if ($count > 0) {
-        echo '<script>alert("Địa chỉ đúng vui lòng đặt lại mật khẩu"); window.location.href = "index.php?quanly=datlaimatkhau&id=' . $id["id_dangky"] . '";</script>';
-     } else {
-         echo '<p style="color:red;text-align:center">Không tìm thấy Email của bạn.Vui lòng kiểm tra lại!</p>';
-     }
-  }
+
+    $sql_dk = "SELECT * FROM tbl_dangky WHERE email = '".$email."' LIMIT 1 ";
+    $row_dk = mysqli_query($mysqli, $sql_dk);
+    $id = mysqli_fetch_array($row_dk);
+    $count = mysqli_num_rows($row_dk);
+
+    $sql_am = "SELECT * FROM tbl_admin WHERE username = '".$email."' LIMIT 1 ";
+    $row_am = mysqli_query($mysqli, $sql_am);
+    $id_am = mysqli_fetch_array($row_am);
+    $count_am = mysqli_num_rows($row_am);
+
+    if ($count > 0 || $count_am > 0){
+        if ($count > 0) {
+            echo '<script>alert("Địa chỉ đúng vui lòng đặt lại mật khẩu"); window.location.href = "index.php?quanly=datlaimatkhau&id=' . $id["id_dangky"] . '";</script>';
+        }else if ($count_am > 0) {
+            echo '<script>alert("Địa chỉ đúng vui lòng đặt lại mật khẩu"); window.location.href = "index.php?quanly=datlaimatkhau&id=' . $id_am["id_admin"] . '";</script>';
+        } 
+    }else {
+        echo '<p style="color:red;text-align:center">Không tìm thấy Email của bạn.Vui lòng kiểm tra lại!</p>';
+    }
+}
 ?>
 
 <script>

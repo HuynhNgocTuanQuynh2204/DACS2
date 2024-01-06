@@ -1,7 +1,10 @@
 <?php 
    if (isset($_GET['dangxuat']) && $_GET['dangxuat'] == 1){
     unset($_SESSION['dangnhap']);
-    header('location:login.php');
+    unset($_SESSION['name']);
+    unset($_SESSION['id_admin']);
+    unset($_SESSION['level']);
+    header('location:http://localhost/SECURITY/index.php?quanly=dangnhap');
    }
 ?>  
 
@@ -11,5 +14,7 @@
             echo $_SESSION['dangnhap'];
         } 
         ?>
-    </a></p>
+    </a>
+    <a href="../index.php" class="btn btn-info">Đến trang người dùng</a>
+</p>
 </div>

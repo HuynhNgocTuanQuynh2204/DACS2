@@ -45,7 +45,7 @@ $query_lietke_dh = mysqli_query($mysqli, $sql_lietke_dh);
             $i = 0;
             while ($row = mysqli_fetch_array($query_lietke_dh)) {
               $i++;
-              if ($row['cart_status'] == 0 || $row['cart_status'] == 2) {
+              if ($row['cart_status'] == 0 || $row['cart_status'] == 2 || $row['cart_status'] == 4 || $row['cart_status'] == 5) {
             ?>
               <tr>
                 <td><?php echo $i ?></td>
@@ -58,6 +58,11 @@ $query_lietke_dh = mysqli_query($mysqli, $sql_lietke_dh);
                   <?php
                   if ($row['cart_status'] == 0) {
                     echo ' <a class="btn btn-danger" href="pages/main/xulydonhang.php?cart_status=2&code='.$row['code_cart'].'">Đơn hàng đã gửi đến địa chỉ nhận.Vui lòng xác nhận</a>';
+                    echo ' <a style="margin-top:10px" class="btn btn-primary" href="index.php?quanly=trahang&code='.$row['id_cart'].'">Yêu cầu hoàn trả</a>';
+                  }else if ($row['cart_status'] == 4){
+                    echo'<b style="color:green">Đơn hàng đang chờ QTV duyệt hủy</b>';
+                  }else if ($row['cart_status'] == 5){
+                    echo'<b style="color:blue">Đơn hàng đã hủy</b>';
                   }else{
                     echo'<b style="color:violet">Đã nhận hàng</b>';
                   }

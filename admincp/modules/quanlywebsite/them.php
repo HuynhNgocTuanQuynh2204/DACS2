@@ -1,3 +1,6 @@
+<?php
+       if($_SESSION['level']!=0){
+    ?>
 <h6 style="text-align: center;text-transform: uppercase;font-weight: bold;">Thêm slide</h6>
 <table border="1px" width="100%" style="border-collapse: collapse;">
   <form method="POST" action="modules/quanlywebsite/xuly.php" enctype="multipart/form-data">
@@ -14,3 +17,6 @@
   </tr>
   </form>
 </table>
+<?php
+       }
+       ?>

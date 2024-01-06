@@ -1,18 +1,39 @@
 <?php
-  if (isset($_POST['doimatkhau'])){
-    $matkhau_cu =md5($_POST['password_cu']);
-    $matkhau_moi =md5($_POST['password_moi']);
-    $sql = "SELECT * FROM tbl_dangky WHERE matkhau ='".$matkhau_cu."' LIMIT 1 ";
-    $row = mysqli_query($mysqli,$sql);
-    $count = mysqli_num_rows($row);
-    if ($count>0){
-        $sql_update = mysqli_query($mysqli,"UPDATE tbl_dangky SET  matkhau ='".$matkhau_moi."'");
-        echo '<p style="color:green;text-align:center;">Mật khẩu đã được thay đổi</p>';
-    }else{
-        echo '<p style="color:red;text-align:center;">Mật khẩu cũ không đúng vui lòng nhập lại</p>';
+
+if (isset($_POST['doimatkhau'])){
+    $matkhau_cu = md5($_POST['password_cu']);
+    $matkhau_moi = md5($_POST['password_moi']);
+    
+    if(isset($_SESSION['id_khachhang'])) {
+        $id_khachhang = $_SESSION['id_khachhang'];
+        $sql_dangky = "SELECT * FROM tbl_dangky WHERE id_dangky = '".$id_khachhang."' AND matkhau ='".$matkhau_cu."' LIMIT 1";
+        $result_dangky = mysqli_query($mysqli, $sql_dangky);
+        $count_dangky = mysqli_num_rows($result_dangky);
+
+        if ($count_dangky > 0) {
+            $sql_update_dangky = "UPDATE tbl_dangky SET matkhau ='".$matkhau_moi."' WHERE id_dangky = '".$id_khachhang."'";
+            $update_dangky = mysqli_query($mysqli, $sql_update_dangky);
+            echo '<p style="color:green;text-align:center;">Mật khẩu đã được thay đổi</p>';
+        } else {
+            echo '<p style="color:red;text-align:center;">Mật khẩu cũ không đúng, vui lòng nhập lại</p>';
+        }
+    } else if(isset($_SESSION['id_admin'])) {
+        $id_admin = $_SESSION['id_admin'];
+        $sql_admin = "SELECT * FROM tbl_admin WHERE id_admin = '".$id_admin."' AND password ='".$matkhau_cu."' LIMIT 1";
+        $result_admin = mysqli_query($mysqli, $sql_admin);
+        $count_admin = mysqli_num_rows($result_admin);
+
+        if ($count_admin > 0) {
+            $sql_update_admin = "UPDATE tbl_admin SET password ='".$matkhau_moi."' WHERE id_admin = '".$id_admin."'";
+            $update_admin = mysqli_query($mysqli, $sql_update_admin);
+            echo '<p style="color:green;text-align:center;">Mật khẩu đã được thay đổi </p>';
+        } else {
+            echo '<p style="color:red;text-align:center;">Mật khẩu cũ không đúng, vui lòng nhập lại</p>';
+        }
     }
-  }
+}
 ?>
+
 <form action="" method="POST">
 <div class="container">
         <div class="row justify-content-center">

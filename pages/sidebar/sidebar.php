@@ -6,10 +6,16 @@
 }
 </style>
 <div class="sidebardanhmuc">
+<?php
+if(!isset($_SESSION['dangnhap'])){
+                 ?>
 <h4 >Đăng bài viết</h4>
     <ul class="list_sidebar">
     <li style="text-transform: uppercase;"><a href="index.php?quanly=dangbai"  style="color: darkblue;">Đăng bài</a></li>
     </ul>
+    <?php
+    }
+    ?>
     <?php
     if(isset($_SESSION['dangky'])){
                  ?>

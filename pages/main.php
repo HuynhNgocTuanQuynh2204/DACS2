@@ -119,6 +119,12 @@
             }else if($tam =='xulycm'){
                 include("main/xulycm.php");
                 
+            }else if($tam =='trahang'){
+                include("main/trahang.php");
+                
+            }else if($tam =='thongbao'){
+                include("main/thongbao.php");
+                
             } else {
                 include("main/index.php");
             }

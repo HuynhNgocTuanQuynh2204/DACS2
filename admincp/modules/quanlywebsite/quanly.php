@@ -1,4 +1,6 @@
-<div class="quanly">
+<?php
+       if($_SESSION['level']!=0){
+    ?><div class="quanly">
 <h6 style="text-align: center;text-transform: uppercase;font-weight: bold;">Quản lý show</h6>
 <table border="1px" width="100%" style="border-collapse: collapse;">
 
@@ -20,3 +22,6 @@
         padding: 100px 0px;
     }
 </style>
+<?php
+       }
+       ?>

@@ -29,10 +29,6 @@
                             <input type="address" class="form-control" name="address" id="address" placeholder="Địa chỉ..." value="<?php echo $row['diachi'] ?>" required>
                         </div>
                         <div class="form-group">
-                            <label for="password">Mật khẩu</label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu..." value="<?php echo $row['password'] ?>" required>
-                        </div>
-                        <div class="form-group">
                             <label for="level">Level</label>
                             <input type="text" class="form-control" name="level" id="level" placeholder="Level..." value="<?php echo $row['admin_status'] ?>" required>
                         </div>
